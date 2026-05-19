@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valley Green Landscaping — Hadley &amp; South Hadley, MA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <rect width="200" height="200" fill="#1d3b22"/>
+    <g transform="translate(100,100)" fill="#cfe27a">
+      <path d="M -34,18 Q -10,-30 0,-34 Q 10,-30 34,18 Z"/>
+      <path d="M 0,-34 L 0,28" stroke="#1d3b22" stroke-width="3"/>
+    </g>
+  </svg>
+</template>
+<style>
+  :root{
+    --green:        #1d3b22;
+    --green-2:      #122a17;
+    --green-3:      #2b5232;
+    --lime:         #cfe27a;
+    --lime-soft:    #e4eeb8;
+    --paper:        #f7f4ea;
+    --paper-2:      #efebdc;
+    --white:        #ffffff;
+    --ink:          #0f1c14;
+    --ink-soft:     #233329;
+    --muted:        #6a7363;
+    --line:         #e2dcc6;
+    --line-2:       #d2cbb1;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:"Inter", ui-sans-serif, system-ui, sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{font-size:16px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  /* layout */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;width:100%}
+  @media (max-width:1024px){ .wrap{padding:0 20px} }
+  @media (max-width:560px){ .wrap{padding:0 18px} }
+
+  /* nav band — always green */
+  .nav{background:var(--green);color:#dbe5c4;position:sticky;top:0;z-index:50}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--white);font-weight:600;letter-spacing:-0.01em;font-size:17px}
+  .brand .mark{width:32px;height:32px;border-radius:50%;background:var(--lime);display:grid;place-items:center;color:var(--green-2);flex:none}
+  .brand .mark svg{width:18px;height:18px}
+  .brand b{font-weight:600;display:block;font-size:17px;line-height:1.05}
+  .brand .sub{display:block;font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.06em;font-weight:400;margin-top:1px}
+  .tabs{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:6px;border-radius:999px}
+  .tabs a{font-size:13px;color:rgba(255,255,255,.78);padding:8px 14px;border-radius:999px;transition:all .15s;font-weight:500;white-space:nowrap}
+  .tabs a:hover{color:var(--white)}
+  .tabs a.active{background:var(--lime);color:var(--green-2);font-weight:600}
+  .nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--green-2);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;transition:filter .15s;white-space:nowrap}
+  .nav-cta:hover{filter:brightness(1.05)}
+  @media (max-width:880px){
+    .nav-inner{height:auto;padding-top:12px;padding-bottom:12px;gap:12px;justify-content:space-between}
+    .brand{order:1}
+    .nav-cta{order:2;padding:8px 14px;font-size:12px}
+    .tabs{order:3;flex-basis:100%;width:100%;justify-content:space-between;padding:4px;gap:2px}
+    .tabs a{font-size:12px;padding:8px 10px;flex:1;text-align:center}
+  }
+  @media (max-width:380px){
+    .tabs a{font-size:11px;padding:7px 6px}
+    .brand b{font-size:15px}
+    .brand .sub{font-size:10px}
+  }
+
+  /* header band — green block above content on every page */
+  .header{background:var(--green);color:var(--white);position:relative;overflow:hidden}
+  .header::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 12% 110%, rgba(207,226,122,.18), transparent 35%),
+      radial-gradient(circle at 88% -10%, rgba(207,226,122,.12), transparent 40%);
+    pointer-events:none;
+  }
+  .header-leaf{position:absolute;right:-40px;top:-30px;width:220px;height:220px;opacity:.10;color:var(--lime);pointer-events:none}
+  .header-leaf svg{width:100%;height:100%}
+  .header .wrap{position:relative;z-index:2}
+
+  .header.compact{padding:48px 0 56px}
+  .header.compact h1{font-size:clamp(38px, 5vw, 56px);font-weight:500;line-height:1.05;letter-spacing:-0.02em;margin:0}
+  .header.compact .crumb{font-size:12px;color:var(--lime);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .header.compact p{margin:16px 0 0;color:rgba(255,255,255,.78);font-size:17px;max-width:540px}
+
+  /* big home hero */
+  .hero{padding-top:88px;padding-bottom:120px}
+  @media (max-width:1024px){
+    .hero{padding-top:48px;padding-bottom:64px;padding-left:24px;padding-right:24px}
+    .hero h1{max-width:100%;font-size:clamp(32px, 8vw, 48px)}
+    .hero p{font-size:15px}
+    .hero .eyebrow{font-size:11px;letter-spacing:.18em}
+    .header.compact{padding:32px 0 40px}
+    .header.compact .wrap{padding-left:24px;padding-right:24px}
+    .header.compact h1{font-size:clamp(26px, 7vw, 40px)}
+    .header.compact p{font-size:15px}
+    .header-leaf{width:120px;height:120px;right:-24px;top:-16px;opacity:.06}
+    .section{padding:40px 0}
+    .home-services{padding:32px 0 56px}
+    .home-cta{padding:28px;gap:20px}
+    .form{padding:24px}
+    .info-row .val{font-size:14px;word-break:break-word;overflow-wrap:anywhere}
+  }
+  @media (max-width:560px){
+    .hero{padding-left:18px;padding-right:18px}
+    .header.compact .wrap{padding-left:18px;padding-right:18px}
+    .hero h1{font-size:clamp(30px, 8vw, 40px)}
+    .header.compact h1{font-size:clamp(24px, 6.5vw, 34px)}
+  }
+  /* universal safety: never let a child push the page wider than the viewport */
+  .wrap, .home-services, .section, .home-cta, .svc, .card, .form, .info, .info-row, .about-body, .about-grid, .contact-grid{min-width:0}
+  .info-row .val, .form input, .form textarea, h1, h2, h3, p{overflow-wrap:break-word}
+
+  /* mobile/tablet: center white-section content + shrink so nothing rides the right edge */
+  @media (max-width:1024px){
+    .home-services{text-align:center}
+    .home-services h2{font-size:clamp(22px, 6vw, 28px);margin-left:auto;margin-right:auto}
+    .home-services .sub{margin-left:auto;margin-right:auto;max-width:36ch;font-size:14px}
+    .card{align-items:flex-start;text-align:left}
+    .card h3{font-size:15px}
+    .card .pr{font-size:13px}
+    .home-cta{text-align:center;justify-items:center}
+    .home-cta h3{font-size:clamp(20px, 5.5vw, 26px)}
+    .home-cta p{margin-left:auto;margin-right:auto;font-size:14px}
+    .svc{grid-template-columns:1fr;gap:10px;text-align:center;justify-items:center;padding:22px 18px}
+    .svc .ic{margin:0 auto}
+    .svc .body h3{font-size:16px}
+    .svc .body p{font-size:13px}
+    .svc .price{text-align:center;margin-top:4px;font-size:16px}
+    .note{flex-direction:column;text-align:center;align-items:center;font-size:13px;padding:16px 18px}
+    .about-body{text-align:center}
+    .about-body p{margin-left:auto;margin-right:auto;font-size:15px}
+    .about-body p:first-of-type{font-size:17px}
+    .about-body .area-chips{justify-content:center}
+    .info-row{justify-content:flex-start}
+    .info-row .val{font-size:15px}
+    .info-row .val small{font-size:12px}
+    .form h3{text-align:center;font-size:18px}
+    .form .sub{text-align:center;font-size:13px}
+    .field input,.field select,.field textarea{font-size:14px}
+  }
+
+  /* mobile: tight one-size-fits-all centering + shrink so no content rides the right edge */
+  @media (max-width:600px){
+    .wrap{padding-left:24px;padding-right:24px}
+
+    /* green header bands: center the page title, crumb and description */
+    .header.compact .wrap, .hero{text-align:center}
+    .header.compact h1, .header.compact p, .header.compact .crumb,
+    .hero h1, .hero p, .hero .eyebrow{margin-left:auto;margin-right:auto}
+    .header.compact p, .hero p{max-width:34ch}
+    .hero h1{max-width:none}
+    .hero-actions{justify-content:center}
+    .home-services, .section{padding-left:0;padding-right:0;text-align:center}
+    .home-services > *, .section > *{margin-left:auto;margin-right:auto}
+    .home-services h2, .home-services .sub, .section h2, .section .sub{max-width:30ch}
+
+    /* cards: stack into a single column on mobile so they read as a list under "What we do" */
+    .cards{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto;gap:10px}
+
+    /* home CTA */
+    .home-cta{padding:24px 20px;margin-left:auto;margin-right:auto}
+    .home-cta .btn{width:100%;justify-content:center}
+
+    /* services: stack neatly and keep prices below */
+    .svc{padding:18px 16px;gap:12px}
+    .svc .body h3{font-size:15px}
+    .svc .body p{font-size:13px}
+    .note{padding:14px 16px;gap:12px}
+    .note .btn{width:100%;justify-content:center}
+
+    /* about */
+    .about-body{text-align:center}
+    .about-body p, .about-body > div{max-width:38ch;margin-left:auto;margin-right:auto}
+    .about-body .area-chips{justify-content:center}
+
+    /* contact: stack the info row, center it, and let the long email wrap */
+    .info-row{flex-direction:column;align-items:center;text-align:center;gap:8px;padding:18px 8px}
+    .info-row .ic{margin:0 auto}
+    .info-row .val{font-size:15px;max-width:100%;word-break:break-word;overflow-wrap:anywhere}
+    .info-row .val small{font-size:12px}
+
+    /* form */
+    .form{padding:20px 18px;margin-left:auto;margin-right:auto;max-width:480px}
+    .form .field, .form .field-row{text-align:left}
+  }
+  .hero .eyebrow{font-size:12px;color:var(--lime);letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:20px}
+  .hero h1{font-size:clamp(48px, 7vw, 88px);font-weight:500;line-height:1.02;letter-spacing:-0.025em;margin:0;max-width:14ch}
+  .hero h1 .lime{color:var(--lime)}
+  .hero p{margin:24px 0 0;color:rgba(255,255,255,.82);font-size:18px;line-height:1.55;max-width:520px}
+  .hero-actions{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-size:14px;font-weight:600;transition:all .15s;cursor:pointer;border:1px solid transparent;text-decoration:none;white-space:nowrap}
+  .btn-primary{background:var(--lime);color:var(--green-2)}
+  .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.3)}
+  .btn-ghost:hover{border-color:var(--white)}
+  .btn-dark{background:var(--green);color:var(--white)}
+  .btn-dark:hover{background:var(--green-2)}
+  .btn-outline{background:transparent;color:var(--green);border-color:var(--line-2)}
+  .btn-outline:hover{border-color:var(--green);background:var(--paper-2)}
+
+  /* main content area */
+  main{flex:1}
+  .page{display:none;animation:fade .35s ease both}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* content sections */
+  .section{padding:72px 0}
+  .section h2{font-size:clamp(28px, 3.4vw, 40px);font-weight:500;line-height:1.05;letter-spacing:-0.02em;margin:0 0 12px}
+  .section .sub{color:var(--muted);font-size:16px;max-width:560px;margin:0 0 40px}
+
+  /* home: services preview cards */
+  .home-services{padding:56px 0 96px}
+  .home-services h2{font-size:clamp(26px, 2.8vw, 34px);font-weight:500;letter-spacing:-0.015em;margin:0 0 6px}
+  .home-services .sub{color:var(--muted);margin:0 0 32px}
+  .cards{display:grid;grid-template-columns:repeat(4, 1fr);gap:14px}
+  @media (max-width:920px){ .cards{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .cards{grid-template-columns:1fr} }
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;transition:all .2s;position:relative;display:flex;flex-direction:column;gap:10px;min-height:160px}
+  .card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 14px 36px -22px rgba(14,27,19,.25)}
+  .card .ic{width:36px;height:36px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;color:var(--green);margin-bottom:4px}
+  .card .ic svg{width:18px;height:18px}
+  .card h3{font-size:16px;font-weight:600;margin:0;letter-spacing:-0.005em}
+  .card .pr{margin-top:auto;color:var(--green);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px}
+  .card .pr small{color:var(--muted);font-weight:400;font-size:12px}
+
+  .home-cta{background:var(--green);color:var(--white);border-radius:18px;padding:48px;display:grid;grid-template-columns:1.4fr auto;align-items:center;gap:32px;margin-bottom:64px}
+  @media (max-width:1024px){ .home-cta{grid-template-columns:1fr;padding:32px;text-align:center} }
+  .home-cta h3{font-size:clamp(22px, 2.4vw, 30px);font-weight:500;line-height:1.1;letter-spacing:-0.015em;margin:0 0 8px}
+  .home-cta p{margin:0;color:rgba(255,255,255,.75);font-size:15px;max-width:480px}
+
+  /* services page */
+  .svc-list{display:flex;flex-direction:column;gap:14px}
+  .svc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px 28px;display:grid;grid-template-columns:48px 1fr auto;gap:24px;align-items:center;transition:all .2s}
+  .svc:hover{border-color:var(--green)}
+  .svc .ic{width:48px;height:48px;border-radius:14px;background:var(--paper-2);display:grid;place-items:center;color:var(--green)}
+  .svc .ic svg{width:22px;height:22px}
+  .svc .body h3{margin:0 0 4px;font-size:18px;font-weight:600}
+  .svc .body p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+  .svc .price{font-weight:600;font-size:18px;color:var(--green);text-align:right;white-space:nowrap}
+  .svc .price small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+  @media (max-width:600px){
+    .svc{grid-template-columns:48px 1fr;gap:14px}
+    .svc .price{grid-column:2 / -1;text-align:left;margin-top:6px}
+  }
+
+  .note{background:var(--lime-soft);border-radius:14px;padding:18px 22px;margin-top:24px;font-size:14px;color:var(--green-2);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+
+  /* about page */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media (max-width:780px){ .about-grid{grid-template-columns:1fr;gap:32px} }
+  .about-photo image-slot{width:100%;aspect-ratio:4/5;border-radius:18px}
+  .about-body p{font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 16px;max-width:48ch}
+  .about-body p:first-of-type{font-size:20px;color:var(--ink);font-weight:500}
+  .area-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:13px;color:var(--ink-soft)}
+  .chip.primary{background:var(--green);color:var(--white);border-color:var(--green)}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--lime)}
+
+  /* contact page */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media (max-width:780px){ .contact-grid{grid-template-columns:1fr;gap:32px} }
+  .info{display:flex;flex-direction:column;gap:8px}
+  .info-row{padding:18px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:center}
+  .info-row:last-child{border-bottom:0}
+  .info-row .ic{width:40px;height:40px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;color:var(--green);flex:none}
+  .info-row .ic svg{width:18px;height:18px}
+  .info-row .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .info-row .val{font-size:17px;color:var(--ink);font-weight:500;margin-top:2px}
+  .info-row .val small{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:2px}
+
+  .form{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:32px}
+  .form h3{margin:0 0 4px;font-size:20px;font-weight:600}
+  .form .sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+  .field{display:block;margin-bottom:14px}
+  .field label{display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px;font-weight:500}
+  .field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 14px;border:1px solid var(--line);background:var(--white);border-radius:10px;color:var(--ink);outline:none;transition:border-color .15s, box-shadow .15s}
+  .field textarea{min-height:88px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(29,59,34,.1)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:480px){ .field-row{grid-template-columns:1fr} }
+  .form .btn{width:100%;justify-content:center;margin-top:6px}
+
+  /* footer */
+  footer{background:var(--green-2);color:rgba(255,255,255,.6);padding:36px 0;margin-top:auto}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px}
+  .foot-inner a:hover{color:var(--white)}
+  .foot-inner .dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3);margin:0 10px;vertical-align:middle}
+
+  /* placeholder appearance */
+  image-slot{background:var(--paper-2)}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home" data-tab="home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M12 22 C 12 12, 16 4, 22 2 C 22 12, 18 20, 12 22 Z" fill="currentColor"/>
+          <path d="M 12 22 L 19 5"/>
+        </svg>
+      </span>
+      <span>
+        <b>Valley Green</b>
+        <span class="sub">Landscaping</span>
+      </span>
+    </a>
+    <nav class="tabs" role="tablist">
+      <a href="#home"     data-tab="home"     class="active">Home</a>
+      <a href="#services" data-tab="services">Services</a>
+      <a href="#about"    data-tab="about">About</a>
+      <a href="#contact"  data-tab="contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact" data-tab="contact">Get a quote →</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home" data-screen-label="Home">
+
+  <div class="header">
+    <div class="header-leaf" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="currentColor"><path d="M 50,5 C 80,20 85,55 65,82 C 50,92 35,90 28,80 C 18,70 22,48 38,30 C 42,22 46,12 50,5 Z"/></svg>
+    </div>
+    <div class="wrap hero">
+      <div class="eyebrow">Hadley · South Hadley</div>
+      <h1>Tidy yards.<br><span class="lime">Done right.</span></h1>
+      <p>Lawn mowing, trimming, seasonal cleanups, and garden installs ran by a family business. Serving Hadley, South Hadley, and nearby areas.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact" data-tab="contact">Request a quote</a>
+        <a class="btn btn-ghost" href="#services" data-tab="services">See pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap home-services">
+    <h2>What we do</h2>
+    <p class="sub">Four services. Honest pricing. Same crew every visit.</p>
+
+    <div class="cards">
+      <a class="card" href="#services" data-tab="services">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 16 L 21 16"/><path d="M3 16 L 6 12 M7 16 L 10 12 M11 16 L 14 12 M15 16 L 18 12"/></svg></span>
+        <h3>Lawn mowing</h3>
+        <div class="pr">From $35 <small>/ visit</small></div>
+      </a>
+      <a class="card" href="#services" data-tab="services">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9 14 L 20 5 M 15 14 L 4 5"/></svg></span>
+        <h3>Trim &amp; edge</h3>
+        <div class="pr">Free <small>with mow</small></div>
+      </a>
+      <a class="card" href="#services" data-tab="services">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3 C 16 8, 16 14, 12 20 C 8 14, 8 8, 12 3 Z" fill="currentColor" fill-opacity="0.15"/><path d="M12 3 L 12 20"/></svg></span>
+        <h3>Seasonal cleanup</h3>
+        <div class="pr">From $120 <small>/ job</small></div>
+      </a>
+      <a class="card" href="#services" data-tab="services">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 20 V 10"/><path d="M12 10 C 8 10, 6 7, 7 4 C 10 4, 13 6, 12 10 Z" fill="currentColor" fill-opacity="0.2"/><path d="M12 13 C 16 13, 18 10, 17 7 C 14 7, 11 9, 12 13 Z" fill="currentColor" fill-opacity="0.2"/><path d="M5 20 L 19 20"/></svg></span>
+        <h3>Garden installs</h3>
+        <div class="pr">From $200 <small>/ project</small></div>
+      </a>
+    </div>
+
+    <div class="home-cta" style="margin-top:64px">
+      <div>
+        <h3>Get a free quote.</h3>
+        <p>Tell us your address and what you need done, and we'll get back to you with pricing.</p>
+      </div>
+      <a class="btn btn-primary" href="#contact" data-tab="contact">Request a quote</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="page-services" data-screen-label="Services">
+  <div class="header compact">
+    <div class="header-leaf" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="currentColor"><path d="M 50,5 C 80,20 85,55 65,82 C 50,92 35,90 28,80 C 18,70 22,48 38,30 C 42,22 46,12 50,5 Z"/></svg>
+    </div>
+    <div class="wrap">
+      <div class="crumb">Services &amp; pricing</div>
+      <h1>Honest pricing.<br>No surprises.</h1>
+      <p>Final number depends on your yard, but most jobs land in these ranges. Written quote before we start.</p>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <div class="svc-list">
+      <div class="svc">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 16 L 21 16"/><path d="M3 16 L 6 12 M7 16 L 10 12 M11 16 L 14 12 M15 16 L 18 12"/></svg></span>
+        <div class="body">
+          <h3>Lawn mowing</h3>
+          <p>Weekly or bi-weekly. Same crew, same day.</p>
+        </div>
+        <div class="price">$35–$55<small>per visit</small></div>
+      </div>
+      <div class="svc">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9 14 L 20 5 M 15 14 L 4 5"/></svg></span>
+        <div class="body">
+          <h3>Trimming &amp; edging</h3>
+          <p>Crisp lines along walks, beds, and fence lines.</p>
+        </div>
+        <div class="price">Free<small>with every mow</small></div>
+      </div>
+      <div class="svc">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3 C 16 8, 16 14, 12 20 C 8 14, 8 8, 12 3 Z" fill="currentColor" fill-opacity="0.15"/><path d="M12 3 L 12 20"/></svg></span>
+        <div class="body">
+          <h3>Seasonal cleanups</h3>
+          <p>Leaves hauled, beds re-edged, debris gone. Spring &amp; fall.</p>
+        </div>
+        <div class="price">$120–$180<small>per cleanup</small></div>
+      </div>
+      <div class="svc">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 20 V 10"/><path d="M12 10 C 8 10, 6 7, 7 4 C 10 4, 13 6, 12 10 Z" fill="currentColor" fill-opacity="0.2"/><path d="M12 13 C 16 13, 18 10, 17 7 C 14 7, 11 9, 12 13 Z" fill="currentColor" fill-opacity="0.2"/><path d="M5 20 L 19 20"/></svg></span>
+        <div class="body">
+          <h3>Small garden installs</h3>
+          <p>New beds, foundation plantings, refreshed borders.</p>
+        </div>
+        <div class="price">$200–$400<small>typical range</small></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span>Want an exact number? Get a free quote.</span>
+      <a class="btn btn-dark" href="#contact" data-tab="contact">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about" data-screen-label="About">
+  <div class="header compact">
+    <div class="header-leaf" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="currentColor"><path d="M 50,5 C 80,20 85,55 65,82 C 50,92 35,90 28,80 C 18,70 22,48 38,30 C 42,22 46,12 50,5 Z"/></svg>
+    </div>
+    <div class="wrap">
+      <div class="crumb">About us</div>
+      <h1>Small crew.<br>Looks after each yard.</h1>
+      <p>A small family operation, mostly serving Hadley and South Hadley.</p>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <div class="about-grid">
+      <div class="about-photo">
+        <image-slot id="about-photo" shape="rect" radius="18" placeholder="Image will be added later"></image-slot>
+      </div>
+      <div class="about-body">
+        <p>Fewer properties, more attention. Same crew at your house every visit.</p>
+        <p>We run it as a family and take every job seriously. Most of our customers are homeowners over in Hadley and South Hadley.</p>
+        <p>We pick up the phone and show up when we say we will.</p>
+
+        <div style="margin-top:32px">
+          <div style="font-size:11px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:10px">Service area</div>
+          <div class="area-chips">
+            <span class="chip primary"><span class="dot"></span>Hadley</span>
+            <span class="chip primary"><span class="dot"></span>South Hadley</span>
+          </div>
+          <p style="margin-top:14px;font-size:13px;color:var(--muted)">Outside our area? <a href="#contact" data-tab="contact" style="color:var(--green);text-decoration:underline;text-underline-offset:3px">Ask us</a> — we may be able to help.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact" data-screen-label="Contact">
+  <div class="header compact">
+    <div class="header-leaf" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="currentColor"><path d="M 50,5 C 80,20 85,55 65,82 C 50,92 35,90 28,80 C 18,70 22,48 38,30 C 42,22 46,12 50,5 Z"/></svg>
+    </div>
+    <div class="wrap">
+      <div class="crumb">Get in touch</div>
+      <h1>Tell us about<br>your yard.</h1>
+      <p>Tell us your address and what you need done, and we'll get back to you with pricing.</p>
+    </div>
+  </div>
+
+  <div class="wrap section">
+    <div class="contact-grid">
+      <div class="info">
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+          <div>
+            <div class="lbl">Instagram</div>
+            <div class="val">Coming soon<small>Follow for recent jobs and before-and-afters</small></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <div class="lbl">Hours</div>
+            <div class="val">Flexible scheduling<small>Email is the fastest way to get on the calendar</small></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form" onsubmit="event.preventDefault(); alert('Preview — form not wired up yet.');">
+        <h3>Request a quote</h3>
+        <p class="sub">No obligation. We'll come look and email pricing.</p>
+        <div class="field-row">
+          <label class="field"><label>First name</label><input type="text" placeholder="Jane"></label>
+          <label class="field"><label>Last name</label><input type="text" placeholder="Doe"></label>
+        </div>
+        <label class="field"><label>Email or phone</label><input type="text" placeholder="(413) 555-0100"></label>
+        <label class="field"><label>Property address</label><input type="text" placeholder="123 Main St, Hadley, MA"></label>
+        <label class="field">
+          <label>Service</label>
+          <select>
+            <option>Weekly mowing</option>
+            <option>Bi-weekly mowing</option>
+            <option>Spring cleanup</option>
+            <option>Fall cleanup</option>
+            <option>Garden install</option>
+            <option>Not sure</option>
+          </select>
+        </label>
+        <label class="field"><label>Anything we should know</label><textarea placeholder="Yard size, dog, gate code, preferred day…"></textarea></label>
+        <button class="btn btn-dark" type="submit">Send request →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <div>© 2026 Valley Green Landscaping · Hadley, MA</div>
+
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tabs a, [data-tab]');
+  var pages = document.querySelectorAll('.page');
+  function show(name){
+    if (!name) name = 'home';
+    pages.forEach(function(p){
+      p.classList.toggle('active', p.id === 'page-' + name);
+    });
+    document.querySelectorAll('.tabs a').forEach(function(a){
+      a.classList.toggle('active', a.dataset.tab === name);
+    });
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  tabs.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var name = this.dataset.tab;
+      if (!name) return;
+      e.preventDefault();
+      if (location.hash !== '#' + name) location.hash = name;
+      else show(name);
+    });
+  });
+  window.addEventListener('hashchange', function(){
+    var name = location.hash.replace('#','') || 'home';
+    show(name);
+  });
+  // initial
+  var initial = location.hash.replace('#','') || 'home';
+  show(initial);
+})();
+</script>
+
+</body>
+</html>
